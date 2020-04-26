@@ -6,8 +6,8 @@ categories: [Blogging, Java]
 tags: [java]
 ---
 
-<div ><img
-src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg"/></div>
+<div style="width:100%;display:flex; justfy-content:center" ><img style="width:20rem;"
+src="https://cdn.glitch.com/b75055dd-03c2-47e5-9f5d-7923ac439cc1%2Fbirthday.jpg?v=1587923774470"/></div>
 
 # Java Birthday Program
 
