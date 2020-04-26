@@ -84,26 +84,27 @@ package birthdays;
 import java.util.Scanner; // allows us to scan in the users input
 
 public class Birthdays {
-	static Scanner sc = new Scanner(System.in); // initializing a new scanner called sc
-    static double currentMonth, currentYear; // declare two doubles
+  static Scanner sc = new Scanner(System.in); // initializing a new scanner called sc
+  static double currentMonth, currentYear; // declare two doubles
 
+  public static void main(String[] args) {
+	double birthMonth,birthYear,age; // adding variables to the main method
+	getCurrentDate();
+	promptUser();
+	birthMonth = sc.nextDouble();
+	birthYear = sc.nextDouble();
+  }
 
-    public static void main(String[] args) {
-		double birthMonth,birthYear,age; // adding variables to the main method
-        getCurrentDate();
-        promptUser();
-    }
+  public static void getCurrentDate (){
+	System.out.println("Enter the current month followed by the current year.");
+	currentMonth = sc.nextDouble(); // sc receives the current month and is stored in var
+	currentYear = sc.nextDouble();  // sc receives the current year and is stored in var
+  }
 
-    public static void getCurrentDate (){
-        System.out.println("Enter the current month followed by the current year.");
-        currentMonth = sc.nextDouble(); // sc receives the current month and is stored in var
-        currentYear = sc.nextDouble();  // sc receives the current year and is stored in var
-    }
-
-    public static void promptUser(){
-        System.out.println("Please enter your birth month, birth year as well as");
-        System.out.println("Enter four zeros to stop."); // indicator to break out of program
-    }
+  public static void promptUser(){
+	System.out.println("Please enter your birth month, birth year as well as");
+	System.out.println("Enter four zeros to stop."); // indicator to break out of program
+  }
 }
 ```
 
@@ -113,192 +114,122 @@ As you may notice we do several things here.
   - import java.util.Scanner
   - initialize a new scanner called sc within the Birthday class.
   - declare two doubles currentMonth and Current Year within the Birthday class.
-- Second we:
+- Secon we:
+  - while in the main method we set
+    - `currentMonth = sc.nextDouble();` & `currentYear = sc.nextDouble();`
+- Finally we:
   - Go down to the getCurrentDate method to set currentMonth = sc.nextDouble(); & currentYear = sc.nextDouble();
 
 Our next and final tax is using that information to calculate the age.
 
-<!-- ---
-
-## Task 2 - `takeDamage()` Method
-
-- Implement a `takeDamage()` method for the `Pokemon` class which takes a number as an argument and reduces the `.health` of the `Pokemon` by that number.
-
-  - _Note: If `.health` goes below 0, it should be set to 0 instead._
-  - Example:
-    ```javascript
-    console.log(charmander.health); // 30
-    charmander.takeDamage(5);
-    console.log(charmander.health); // 25
-    charmander.takeDamage(2000);
-    console.log(charmander.health); // 0
-    ```
-
- <br>
-
-## Solution 1.2 - Take Damage
+## Solution 1.3 - Completing Birthday Caluclation
 
 ---
 
-```javascript
-function Pokemon(name, attack, defense, health, type) {
-	//do something here
-	this.name = name;
-	this.attack = attack;
-	this.defense = defense;
-	this.health = health;
-	this.type = type;
-	this.initHealth = health;
-	this.takeDamage = function (number) {
-		// Check if health is less than number.
-		if (this.health < number) {
-			// if less than return health as 0.
-			return (this.health = 0);
-		} else {
-			// if not return the precise difference
-			return (this.health = this.health - number);
-		}
-	};
-}
+```java
+package birthdays;
 
-// Squirtle taking damage
-var squirtle = new Pokemon("Squirtle", 110, 100, 120, "water");
-squirtle.takeDamage(20);
-squirtle.takeDamage(100000);
+import java.util.Scanner;
+
+public class Birthdays {
+  static Scanner sc = new Scanner(System.in);
+  static double currentMonth, currentYear;
+
+
+  public static void main(String[] args) {
+	double birthMonth,birthYear,age;
+	getCurrentDate();
+	promptUser();
+
+	birthMonth = sc.nextDouble();
+	birthYear = sc.nextDouble();
+
+	// equation to determine age saved to age variable
+	age = currentYear - birthYear + (currentMonth - birthMonth)/12;
+
+	System.out.printf("For %.0f and %.0f your age is %.1f%n%n", birthMonth, birthYear, age);
+  }
+
+  public static void getCurrentDate (){
+	System.out.println("Enter the current month followed by the current year.");
+	currentMonth = sc.nextDouble();
+	currentYear = sc.nextDouble();
+  }
+
+  public static void promptUser(){
+	System.out.println("Please enter your birth month, birth year as well as");
+	System.out.println("Enter four zeros to stop.");
+  }
+}
 ```
 
-## Task 3 - `attackOpponent()` Method
+In the recently completed section you see we've added the equation which determines the a person birthday.
+Running the code above should allow us to calculate at least 1 age. However what if we wanted to continuously calculate a variety of ages?<br><br>Well, we'd need a loop and a way to break out of that loop. Let's do that now.
 
-- Implement an `attackOpponent()` method for the `Pokemon` class which takes a `Pokemon` object as an argument (the opponent being attacked). This method should call the `takeDamage()` method of the opposing `Pokemon` and provide the appropriate damage as an argument.
-  <br>
-
-`DAMAGE = CURRENT_POKEMON_ATTACK - OPPONENT_POKEMON_DEFENSE`.
-
-- Example:
-
-  ```javascript
-  const charmander = new Pokemon("charmander", 12, 8, 30, "fire");
-  const bulbasaur = new Pokemon("bulbasaur", 7, 9, 35, "grass/poison");
-  console.log(charmander.attack); // 12
-  console.log(bulbasaur.defense); // 9
-  // 12 attack - 9 defense = 3 damage
-  console.log(bulbasaur.health); // 35
-  charmander.attackOpponent(bulbasaur); // charmander attacks bulbasaur
-  console.log(bulbasaur.health); // 32
-  ```
-
-- Attacking a `Pokemon` should do 1 damage **at the very least**. Consider cases in which the `Pokemon` being attacked has a higher `.defense` than the `.attack` of the attacking `Pokemon`.
-  <br>
-
-## Solution 1.3 - Attack Opponent
+## Solution 1.4 - Create a Loop
 
 ---
 
-```javascript
-function Pokemon(name, attack, defense, health, type) {
-	//do something here
-	this.name = name;
-	this.attack = attack;
-	this.defense = defense;
-	this.health = health;
-	this.type = type;
-	this.initHealth = health;
-	this.takeDamage = function (number) {
-		if (this.health < number) {
-			return (this.health = 0);
-		} else {
-			return (this.health = this.health - number);
-		}
-	};
-	this.attackOpponent = function (opponent) {
-		//   This should:
-		//     [x]  Grab the opponents defense
-		//     [x]  Subtract it from the attacker's attack to get the difference (this is the damage points)
-		//     [x]  Call the opponent.takeDamage with the damage points as an arguement.
-		//     [x]  Return the opponents health
-		//     [x]  Account for cases where defense is greater than the attack
-		var damage;
-		if (this.attack > opponent.defense) {
-			// Determined the damaged points by the opponents' defense from the attackers attack save it in a variable
-			damage = this.attack - opponent.defense; // call the opponents takeDamage with the newly determined damage points as an arguement
-			opponent.takeDamage(damage);
-			return opponent.health;
-		} else {
-			return (opponent.health = opponent.health - 1);
-		}
-	};
-}
+```java
+package birthdays;
 
-// Charmander attacks squirtle.
-charmander = new Pokemon("Charmander", 100, 110, 130, "fire");
-squirtle = new Pokemon("Squirtle", 110, 100, 100, "water");
-charmander.attackOpponent(squirtle);
+import java.util.Scanner;
+
+public class Birthdays {
+	static Scanner sc = new Scanner(System.in);
+    static double currentMonth, currentYear;
+
+
+  public static void main(String[] args) {
+	double birthMonth,birthYear,age;
+	getCurrentDate();
+	promptUser();
+
+	birthMonth = sc.nextDouble();
+
+	// Create a while loop
+	while(birthMonth > 0){
+	  // MOVED: birth year input
+	  birthYear = sc.nextDouble();
+      // MOVED: equation to determine age saved to age variable
+	  age = currentYear - birthYear + (currentMonth - birthMonth)/12;
+
+	  System.out.printf("For %.0f and %.0f your age is %.1f%n%n", birthMonth, birthYear, age);
+
+	  promptUser();
+	  birthMonth = sc.nextDouble(); // scan to see if 0000 has been enter
+	}
+  }
+
+  public static void getCurrentDate (){
+	System.out.println("Enter the current month followed by the current year.");
+	currentMonth = sc.nextDouble();
+	currentYear = sc.nextDouble();
+  }
+
+  public static void promptUser(){
+	System.out.println("Please enter your birth month, birth year as well as");
+	System.out.println("Enter four zeros to stop.");
+  }
+}
 ```
 
-## Task 4 - `display()` Method
+In this final segment simply created a while loop with the condition to run so long as a birth month has been entered.<br>If 0000 has been entered then we will break out of the program.<br><br>
 
-- Implement a `display()` method for the `Pokemon` class which takes no arguments and returns a string with the Pokemon's `.name` in all caps, `.type` in all caps and in parenthesis, and `.health` with a forward-slash, " / ", followed by the `.health` the `Pokemon` was initialized with.
+Great, so we are finished. Running the above program should produce the following results for the following current date and birthday 04 2020 & 05 1990
 
-  - Example:
+```console
+run:
+Enter the current month followed by the current year.
+04 2020
+Please enter your birth month, birth year as well as
+Enter four zeros to stop.
+05 1990
+For 5 and 1990 your age is 29.9
 
-    ```javascript
-    const pikachu = new Pokemon("pikachu", 9, 10, 25, "electric");
-    pikachu.display(); // PIKACHU (ELECTRIC) 25/25
-
-    pikachu.health = 12;
-    pikachu.display(); // PIKACHU (ELECTRIC) 12/25
-    ```
-
-    <br>
-
-## Solution 1.4 - Display Pokemon
-
----
-
-```javascript
-function Pokemon(name, attack, defense, health, type) {
-	//do something here
-	this.name = name;
-	this.attack = attack;
-	this.defense = defense;
-	this.health = health;
-	this.type = type;
-	this.initHealth = health;
-	this.takeDamage = function (number) {
-		if (this.health < number) {
-			return (this.health = 0);
-		} else {
-			return (this.health = this.health - number);
-		}
-	};
-	this.attackOpponent = function (opponent) {
-		var damage;
-		if (this.attack > opponent.defense) {
-			damage = this.attack - opponent.defense;
-			opponent.takeDamage(damage);
-			return opponent.health;
-		} else {
-			return (opponent.health = opponent.health - 1);
-		}
-	};
-	this.display = function () {
-		//   This should return a tring with the:
-		//      [x]`.name` in all caps
-		//      [x]`.type` in all caps and parenthesis
-		//      [x]`.health` with a forward-slash "/"
-		//      [x] followed by the `.health` the `Pokemon` was initialized with
-		nameUp = this.name.toUpperCase();
-		typeUp = this.type.toUpperCase();
-		currentHealth = this.health;
-		initHealth = this.initHealth;
-		return `${nameUp} (${typeUp}) ${currentHealth}/${initHealth}`;
-	};
-}
-
-// Displays a Pokemon named Bulbasaur
-const bulbasaur = new Pokemon("bulbasaur", 7, 9, 35, "grass/poison");
-bulbasaur.display();
-``` -->
+Please enter your birth month, birth year as well as
+Enter four zeros to stop.
+```
 
 This concludes the 4 tasks. To see the GitHub Gist click [here](https://gist.github.com/rightbrainpapi/4745d9812895e00ebecb3cdb4e382fe7.js)
 
