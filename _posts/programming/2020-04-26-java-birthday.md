@@ -214,9 +214,9 @@ public class Birthdays {
 }
 ```
 
-In this final segment simply created a while loop with the condition to run so long as a birth month has been entered.<br>If 0000 has been entered then we will break out of the program.<br><br>
+In this final segment simply created a while loop with the condition to run so long as a birth month has been entered. If 0000 has been entered then we will break out of the program.<br>
 
-Great, so we are finished. Running the above program should produce the following results for the following current date and birthday 04 2020 & 05 1990
+Great, so we are finished. Running the above program should produce the following results for the following current date and birthday `04 2020` & `05 1990`
 
 ```console
 run:
@@ -231,6 +231,6 @@ Please enter your birth month, birth year as well as
 Enter four zeros to stop.
 ```
 
-This concludes the 4 tasks. To see the GitHub Gist click [here](https://gist.github.com/rightbrainpapi/4745d9812895e00ebecb3cdb4e382fe7.js)
+This concludes the 4 tasks. To see the GitHub Gist click [here](https://gist.github.com/rightbrainpapi/4745d9812895e00ebecb3cdb4e382fe7)
 
 [^footnote]: The footnote source.
