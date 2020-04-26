@@ -11,35 +11,28 @@ src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9
 
 # Java Birthday Program
 
-Today we will be working on a brief Java program that takes a person's input of the current month and year, and date of birth to determine the person's age.<br><br>
+Today we will be working on a brief Java program that takes a person's input of the current month and year, and their date of birth to determine the person's age.<br><br>
 
 ---
 
 There are a variety of ways to solve this challenge but we will look at one approach.
-Let's use a little backward design figure this out.
+Let's use do a little backward design figure this out.<br><br>
+
+Our Goal: Print the persons age. - First we'll need to: - Ask the person for the current date - Ask the person for their date of birth - Second we'll need to: - Store the person's response to each question in variables - Subtract the date of birth from the current date - Finally we'll need to: - Return our caluclation to the user - Start the process over again.
 
 ---
 
-## Task 1 - Calculate a persons age.
+## Task 1 - Asking the User for information
 
-- Construct and initialize a `Pokemon` object by passing in 5 arguments that corresponds to the following 5 properties in order: `.name`, `.attack`, `.defense`, `.health`, and `.type`.
+- We will need to create a two prompt user statements
 
   - Example:
-    ```javascript
-    const charmander = new Pokemon("charmander", 12, 8, 30, "fire");
-    console.log(charmander.name); // charmander
-    console.log(charmander.attack); // 12
-    console.log(charmander.defense); // 8
-    console.log(charmander.health); // 30
-    console.log(charmander.type); // fire
+    ```java
+    public static void promptUser(){
+        System.out.println("Please do as I ask.");
+        System.out.println("Enter four zeros to stop.");
+    }
     ```
-
-* Data type validation is not needed. You can assume that the following `property`: type pairing is always used:
-  - `.name`: string
-  - `.attack`: number
-  - `.defense`: number
-  - `.health`: number
-  - `.type`: string
 
 ## Solution 1.1 - Define Pokemon Class
 
