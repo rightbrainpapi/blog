@@ -14,9 +14,9 @@ Today we will be working on a brief Java program that takes a person's input of 
 ---
 
 There are a variety of ways to solve this challenge but we will look at one approach.
-Let's use do a little backward design figure this out.<br>
+Let's use do a little backward design figure this out.
 
-## Our Goal: Print the persons age.
+# Our Goal: Print the persons age.
 
 - First we'll need to:
   - Ask the person for the current date
@@ -29,18 +29,6 @@ Let's use do a little backward design figure this out.<br>
   - Start the process over again.
 
 ---
-
-## Task 1 - Ask User for Info
-
-- We will need to create a two prompt user statements
-
-  - Example:
-    ```java
-    public static void promptUser(){
-        System.out.println("Please do as I ask.");
-        System.out.println("Enter four zeros to stop.");
-    }
-    ```
 
 ## Solution 1.1 - Ask User for Info
 
