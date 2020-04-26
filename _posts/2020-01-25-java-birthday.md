@@ -1,0 +1,247 @@
+---
+title: Java Birthday Program
+author: Darnell Simon
+date: 2020-01-25 12:30:00 -0400
+categories: [Blogging, Java]
+tags: [java]
+---
+
+<div ><img
+src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg"/></div>
+
+# Java Birthday Program
+
+Today we will be working on a brief Java program that takes a person's input of the current month and year, and date of birth to determine the person's age.<br><br>
+
+---
+
+There are a variety of ways to solve this challenge but we will look at one approach.
+Let's use a little backward design figure this out.
+
+---
+
+## Task 1 - Calculate a persons age.
+
+- Construct and initialize a `Pokemon` object by passing in 5 arguments that corresponds to the following 5 properties in order: `.name`, `.attack`, `.defense`, `.health`, and `.type`.
+
+  - Example:
+    ```javascript
+    const charmander = new Pokemon("charmander", 12, 8, 30, "fire");
+    console.log(charmander.name); // charmander
+    console.log(charmander.attack); // 12
+    console.log(charmander.defense); // 8
+    console.log(charmander.health); // 30
+    console.log(charmander.type); // fire
+    ```
+
+* Data type validation is not needed. You can assume that the following `property`: type pairing is always used:
+  - `.name`: string
+  - `.attack`: number
+  - `.defense`: number
+  - `.health`: number
+  - `.type`: string
+
+## Solution 1.1 - Define Pokemon Class
+
+---
+
+```javascript
+function Pokemon(name, attack, defense, health, type) {
+	//do something here
+	this.name = name;
+	this.attack = attack;
+	this.defense = defense;
+	this.health = health;
+	this.type = type;
+	this.initHealth = health;
+}
+
+//Creating a pokemon called
+var squirtle = new Pokemon("Squirtle", 110, 100, 120, "water");
+```
+
+<!-- ---
+
+## Task 2 - `takeDamage()` Method
+
+- Implement a `takeDamage()` method for the `Pokemon` class which takes a number as an argument and reduces the `.health` of the `Pokemon` by that number.
+
+  - _Note: If `.health` goes below 0, it should be set to 0 instead._
+  - Example:
+    ```javascript
+    console.log(charmander.health); // 30
+    charmander.takeDamage(5);
+    console.log(charmander.health); // 25
+    charmander.takeDamage(2000);
+    console.log(charmander.health); // 0
+    ```
+
+ <br>
+
+## Solution 1.2 - Take Damage
+
+---
+
+```javascript
+function Pokemon(name, attack, defense, health, type) {
+	//do something here
+	this.name = name;
+	this.attack = attack;
+	this.defense = defense;
+	this.health = health;
+	this.type = type;
+	this.initHealth = health;
+	this.takeDamage = function (number) {
+		// Check if health is less than number.
+		if (this.health < number) {
+			// if less than return health as 0.
+			return (this.health = 0);
+		} else {
+			// if not return the precise difference
+			return (this.health = this.health - number);
+		}
+	};
+}
+
+// Squirtle taking damage
+var squirtle = new Pokemon("Squirtle", 110, 100, 120, "water");
+squirtle.takeDamage(20);
+squirtle.takeDamage(100000);
+```
+
+## Task 3 - `attackOpponent()` Method
+
+- Implement an `attackOpponent()` method for the `Pokemon` class which takes a `Pokemon` object as an argument (the opponent being attacked). This method should call the `takeDamage()` method of the opposing `Pokemon` and provide the appropriate damage as an argument.
+  <br>
+
+`DAMAGE = CURRENT_POKEMON_ATTACK - OPPONENT_POKEMON_DEFENSE`.
+
+- Example:
+
+  ```javascript
+  const charmander = new Pokemon("charmander", 12, 8, 30, "fire");
+  const bulbasaur = new Pokemon("bulbasaur", 7, 9, 35, "grass/poison");
+  console.log(charmander.attack); // 12
+  console.log(bulbasaur.defense); // 9
+  // 12 attack - 9 defense = 3 damage
+  console.log(bulbasaur.health); // 35
+  charmander.attackOpponent(bulbasaur); // charmander attacks bulbasaur
+  console.log(bulbasaur.health); // 32
+  ```
+
+- Attacking a `Pokemon` should do 1 damage **at the very least**. Consider cases in which the `Pokemon` being attacked has a higher `.defense` than the `.attack` of the attacking `Pokemon`.
+  <br>
+
+## Solution 1.3 - Attack Opponent
+
+---
+
+```javascript
+function Pokemon(name, attack, defense, health, type) {
+	//do something here
+	this.name = name;
+	this.attack = attack;
+	this.defense = defense;
+	this.health = health;
+	this.type = type;
+	this.initHealth = health;
+	this.takeDamage = function (number) {
+		if (this.health < number) {
+			return (this.health = 0);
+		} else {
+			return (this.health = this.health - number);
+		}
+	};
+	this.attackOpponent = function (opponent) {
+		//   This should:
+		//     [x]  Grab the opponents defense
+		//     [x]  Subtract it from the attacker's attack to get the difference (this is the damage points)
+		//     [x]  Call the opponent.takeDamage with the damage points as an arguement.
+		//     [x]  Return the opponents health
+		//     [x]  Account for cases where defense is greater than the attack
+		var damage;
+		if (this.attack > opponent.defense) {
+			// Determined the damaged points by the opponents' defense from the attackers attack save it in a variable
+			damage = this.attack - opponent.defense; // call the opponents takeDamage with the newly determined damage points as an arguement
+			opponent.takeDamage(damage);
+			return opponent.health;
+		} else {
+			return (opponent.health = opponent.health - 1);
+		}
+	};
+}
+
+// Charmander attacks squirtle.
+charmander = new Pokemon("Charmander", 100, 110, 130, "fire");
+squirtle = new Pokemon("Squirtle", 110, 100, 100, "water");
+charmander.attackOpponent(squirtle);
+```
+
+## Task 4 - `display()` Method
+
+- Implement a `display()` method for the `Pokemon` class which takes no arguments and returns a string with the Pokemon's `.name` in all caps, `.type` in all caps and in parenthesis, and `.health` with a forward-slash, " / ", followed by the `.health` the `Pokemon` was initialized with.
+
+  - Example:
+
+    ```javascript
+    const pikachu = new Pokemon("pikachu", 9, 10, 25, "electric");
+    pikachu.display(); // PIKACHU (ELECTRIC) 25/25
+
+    pikachu.health = 12;
+    pikachu.display(); // PIKACHU (ELECTRIC) 12/25
+    ```
+
+    <br>
+
+## Solution 1.4 - Display Pokemon
+
+---
+
+```javascript
+function Pokemon(name, attack, defense, health, type) {
+	//do something here
+	this.name = name;
+	this.attack = attack;
+	this.defense = defense;
+	this.health = health;
+	this.type = type;
+	this.initHealth = health;
+	this.takeDamage = function (number) {
+		if (this.health < number) {
+			return (this.health = 0);
+		} else {
+			return (this.health = this.health - number);
+		}
+	};
+	this.attackOpponent = function (opponent) {
+		var damage;
+		if (this.attack > opponent.defense) {
+			damage = this.attack - opponent.defense;
+			opponent.takeDamage(damage);
+			return opponent.health;
+		} else {
+			return (opponent.health = opponent.health - 1);
+		}
+	};
+	this.display = function () {
+		//   This should return a tring with the:
+		//      [x]`.name` in all caps
+		//      [x]`.type` in all caps and parenthesis
+		//      [x]`.health` with a forward-slash "/"
+		//      [x] followed by the `.health` the `Pokemon` was initialized with
+		nameUp = this.name.toUpperCase();
+		typeUp = this.type.toUpperCase();
+		currentHealth = this.health;
+		initHealth = this.initHealth;
+		return `${nameUp} (${typeUp}) ${currentHealth}/${initHealth}`;
+	};
+}
+
+// Displays a Pokemon named Bulbasaur
+const bulbasaur = new Pokemon("bulbasaur", 7, 9, 35, "grass/poison");
+bulbasaur.display();
+``` -->
+
+This concludes the 4 tasks. To see the GitHub Gist click [here](https://gist.github.com/rightbrainpapi/4745d9812895e00ebecb3cdb4e382fe7.js)
+
+[^footnote]: The footnote source.
