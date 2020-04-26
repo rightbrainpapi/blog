@@ -22,7 +22,7 @@ Our Goal: Print the persons age. - First we'll need to: - Ask the person for the
 
 ---
 
-## Task 1 - Asking the User for information
+## Task 1 - Ask User for Info
 
 - We will need to create a two prompt user statements
 
@@ -34,23 +34,67 @@ Our Goal: Print the persons age. - First we'll need to: - Ask the person for the
     }
     ```
 
-## Solution 1.1 - Define Pokemon Class
+## Solution 1.1 - Ask User for Info
 
 ---
 
-```javascript
-function Pokemon(name, attack, defense, health, type) {
-	//do something here
-	this.name = name;
-	this.attack = attack;
-	this.defense = defense;
-	this.health = health;
-	this.type = type;
-	this.initHealth = health;
-}
+```java
+package birthdays;
 
-//Creating a pokemon called
-var squirtle = new Pokemon("Squirtle", 110, 100, 120, "water");
+public class Birthdays {
+
+    public static void main(String[] args) {
+        getCurrentDate();
+        promptUser();
+    }
+
+    public static void getCurrentDate (){
+        System.out.println("Enter the current month followed by the current year."); // asks for current date
+        currentMonth = sc.nextDouble(); // receives the current month and stores in var
+        currentYear = sc.nextDouble();  // receives the current year and stores in var
+    }
+
+    public static void promptUser(){
+        System.out.println("Please enter your birth month, birth year as well as"); // asks for birth date
+        System.out.println("Enter four zeros to stop."); // indicator to break out of program
+    }
+
+
+}
+```
+
+Now that we asked the user for the current month and year we need a way to save the users input.
+Lets add a package call Scanner and a few variables.
+
+```java
+package birthdays;
+
+import java.util.Scanner;
+
+public class Birthdays {
+	//Introducing Class-wide variables
+    static double currentMonth, currentYear;
+    static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+		double birthMonth,birthYear,age; // Adding variables to the main method
+        getCurrentDate();
+        promptUser();
+    }
+
+    public static void getCurrentDate (){
+        System.out.println("Enter the current month followed by the current year.");
+        currentMonth = sc.nextDouble(); // receives the current month and stores in var
+        currentYear = sc.nextDouble();  // receives the current year and stores in var
+    }
+
+    public static void promptUser(){
+        System.out.println("Please enter your birth month, birth year as well as");
+        System.out.println("Enter four zeros to stop."); // indicator to break out of program
+    }
+
+
+}
 ```
 
 <!-- ---
