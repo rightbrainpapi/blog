@@ -1,15 +1,13 @@
 ---
 title: Java Birthday Program
 author: Darnell Simon
-date: 2020-01-25 12:30:00 -0400
+date: 2020-04-26 12:30:00 -0400
 categories: [Blogging, Java]
 tags: [java]
 ---
 
 <div style="width:100%;display:flex; justfy-content:center" ><img style="width:20rem;"
 src="https://cdn.glitch.com/b75055dd-03c2-47e5-9f5d-7923ac439cc1%2Fbirthday.jpg?v=1587923774470"/></div>
-
-# Java Birthday Program
 
 Today we will be working on a brief Java program that takes a person's input of the current month and year, and their date of birth to determine the person's age.<br><br>
 
@@ -73,7 +71,7 @@ public class Birthdays {
 }
 ```
 
-Now that we asked the user for the current month and year we need a way to save the users input.
+Now that we've created two methods to asked the user for the current date and their date of birth we need a way to save the users input.
 Lets add a package call Scanner and a few variables.
 
 ```java
