@@ -77,7 +77,7 @@ Lets add a package call Scanner and a few variables.
 ```java
 package birthdays;
 
-import java.util.Scanner;
+import java.util.Scanner; // allows us to scan in the users input
 
 public class Birthdays {
 	//Introducing Class-wide variables
@@ -85,7 +85,7 @@ public class Birthdays {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-		double birthMonth,birthYear,age; // Adding variables to the main method
+		double birthMonth,birthYear,age; // adding variables to the main method
         getCurrentDate();
         promptUser();
     }
@@ -100,8 +100,6 @@ public class Birthdays {
         System.out.println("Please enter your birth month, birth year as well as");
         System.out.println("Enter four zeros to stop."); // indicator to break out of program
     }
-
-
 }
 ```
 
