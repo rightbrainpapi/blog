@@ -74,15 +74,19 @@ public class Birthdays {
 Now that we've created two methods to asked the user for the current date and their date of birth we need a way to save the users input.
 Lets add a package call Scanner and a few variables.
 
+## Solution 1.2 - Store Input to Variable
+
+---
+
 ```java
 package birthdays;
 
 import java.util.Scanner; // allows us to scan in the users input
 
 public class Birthdays {
-	//Introducing Class-wide variables
-    static double currentMonth, currentYear;
-    static Scanner sc = new Scanner(System.in);
+	static Scanner sc = new Scanner(System.in); // initializing a new scanner called sc
+    static double currentMonth, currentYear; // declare two doubles
+
 
     public static void main(String[] args) {
 		double birthMonth,birthYear,age; // adding variables to the main method
@@ -92,8 +96,8 @@ public class Birthdays {
 
     public static void getCurrentDate (){
         System.out.println("Enter the current month followed by the current year.");
-        currentMonth = sc.nextDouble(); // receives the current month and stores in var
-        currentYear = sc.nextDouble();  // receives the current year and stores in var
+        currentMonth = sc.nextDouble(); // sc receives the current month and is stored in var
+        currentYear = sc.nextDouble();  // sc receives the current year and is stored in var
     }
 
     public static void promptUser(){
@@ -102,6 +106,17 @@ public class Birthdays {
     }
 }
 ```
+
+As you may notice we do several things here.
+
+- First we:
+  - import java.util.Scanner
+  - initialize a new scanner called sc within the Birthday class.
+  - declare two doubles currentMonth and Current Year within the Birthday class.
+- Second we:
+  - Go down to the getCurrentDate method to set currentMonth = sc.nextDouble(); & currentYear = sc.nextDouble();
+
+Our next and final tax is using that information to calculate the age.
 
 <!-- ---
 
