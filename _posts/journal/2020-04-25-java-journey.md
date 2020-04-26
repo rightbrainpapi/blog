@@ -2,7 +2,7 @@
 title: Java Journey Begins
 author: Darnell Simon
 date: 2020-04-25 14:00:00 -0400
-categories: [Blogging, java]
+categories: [Journal, Java]
 tags: [java]
 ---
 

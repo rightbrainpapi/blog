@@ -2,7 +2,7 @@
 title: Java Birthday Program
 author: Darnell Simon
 date: 2020-04-26 12:30:00 -0400
-categories: [Blogging, Java]
+categories: [Programming, Java]
 tags: [java]
 ---
 
