@@ -16,9 +16,19 @@ Today we will be working on a brief Java program that takes a person's input of 
 ---
 
 There are a variety of ways to solve this challenge but we will look at one approach.
-Let's use do a little backward design figure this out.<br><br>
+Let's use do a little backward design figure this out.<br>
 
-Our Goal: Print the persons age. - First we'll need to: - Ask the person for the current date - Ask the person for their date of birth - Second we'll need to: - Store the person's response to each question in variables - Subtract the date of birth from the current date - Finally we'll need to: - Return our caluclation to the user - Start the process over again.
+## Our Goal: Print the persons age.
+
+- First we'll need to:
+  - Ask the person for the current date
+  - Ask the person for their date of birth
+- Second we'll need to:
+  - Store the person's response to each question in variables
+  - Subtract the date of birth from the current date
+- Finally we'll need to:
+  - Return our caluclation to the user
+  - Start the process over again.
 
 ---
 
